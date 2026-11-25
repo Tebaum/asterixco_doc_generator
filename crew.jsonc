@@ -1,0 +1,27 @@
+{
+  "agents": [
+    "analista_evidencias",
+    "engenheiro_documentacao"
+  ],
+  "tasks": [
+    {
+      "name": "levantamento_tecnico_task",
+      "description": "Analise as anotações de campo do cliente '{cliente}':\n\n{anotacoes_texto}\n\nAlém disso, utilize obrigatoriamente a ferramenta 'Leitor de Prints de Infraestrutura' passando o caminho '{pasta_prints}' para extrair os dados de todas as imagens disponíveis. Consolide tudo em um inventário técnico bruto e organizado.",
+      "expected_output": "Relatório técnico consolidado contendo todos os dados extraídos tanto das anotações escritas quanto de cada print analisado, sem omitir IPs, portas, modelos ou regras.",
+      "agent": "analista_evidencias"
+    },
+    {
+      "name": "gerar_documentacao_padrao_task",
+      "description": "Gere o documento técnico completo em Markdown para o cliente {cliente} com TODAS as 5 seções obrigatórias (1. Visão Geral do Ambiente, 2. Topologia e Endereçamento de Rede, 3. Segurança Eletrônica e Controle de Acesso, 4. Servidores e Serviços, 5. Lacunas e Pendências de Documentação). Escreva TODAS as linhas das tabelas sem truncar ou interromper o documento.",
+      "expected_output": "Documento técnico completo em Markdown formatado, claro, sem dados inventados e pronto para salvar na base de conhecimento da Asterixco.",
+      "agent": "engenheiro_documentacao",
+      "context": ["levantamento_tecnico_task"],
+      "output_file": "documentacao_cliente.md"
+    }
+  ],
+  "inputs": {
+    "cliente": "CLIENTE",
+    "pasta_prints": "entradas/prints",
+    "anotacoes_texto": "Levantamento de câmeras CFTV e estações de monitoramento das unidades do CLIENTE."
+  }
+}

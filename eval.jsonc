@@ -1,0 +1,37 @@
+// crewai-eval — what "good" means for this crew.
+//
+// Written from your last run: every criterion below is a task's own
+// `expected_output`, which is the bar the crew set for itself. Say what YOU
+// want judged and the next `crewai eval` uses it.
+//
+// Each entry in `criteria` is one yes/no question about the final output, asked
+// and answered on its own. Write them so they can be answered from the output
+// alone — specific to this crew's job, not "is it well written".
+//
+// `task_criteria` and `agent_criteria` ask about one step instead: keyed by a
+// task's name or an agent's role, judged against that step's own output.
+//
+// `assertions` are checked in code, never by a judge: contains, not_contains,
+// regex, min_length, json_parses.
+{
+  "schema": "crewai.eval/v1",
+  "dataset": [
+    {
+      "id": "trace-1",
+      "inputs": {
+        "cliente": "Cliente Teste Asterixco",
+        "pasta_prints": "entradas/prints",
+        "anotacoes_texto": "MikroTik RB750Gr3 na borda com WAN PPPoE e LAN 192.168.10.0/24. Servidor Windows Server 2019 no IP .10 rodando Digifort Enterprise e iDSecure. VPN L2TP ativa para suporte remoto."
+      },
+      "expected_output": "Documento t\u00e9cnico completo em Markdown formatado, claro, sem dados inventados e pronto para salvar na base de conhecimento da Asterixco.",
+      "criteria": [
+        "The final output satisfies the task's expected output: Documento t\u00e9cnico completo em Markdown formatado, claro, sem dados inventados e pronto para salvar na base de conhecimento da Asterixco."
+      ],
+      "task_criteria": {
+        "levantamento_tecnico_task": [
+          "The task's output satisfies its expected output: Relat\u00f3rio t\u00e9cnico consolidado contendo todos os dados extra\u00eddos tanto das anota\u00e7\u00f5es escritas quanto de cada print analisado, sem omitir IPs, portas, modelos ou regras."
+        ]
+      }
+    }
+  ]
+}
